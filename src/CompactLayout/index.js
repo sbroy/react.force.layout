@@ -24,10 +24,11 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
  
- 
 'use strict';
 
-import React, {
+import React from 'react';
+
+import ReactNative, {
   Text,
   View
 } from 'react-native';
@@ -53,8 +54,7 @@ module.exports = React.createClass ({
       return this.context.compactLayout.fieldItems.map((layoutItem,index)=>{
         if(index){
           return (
-            <FieldItem
-            key={'fieldItem_'+index} 
+            <FieldItem 
             sobj={this.context.sobj} 
             layoutItem={layoutItem} 
             onLayoutTap={this.props.onLayoutTap}

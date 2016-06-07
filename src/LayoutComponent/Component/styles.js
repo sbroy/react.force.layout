@@ -26,12 +26,12 @@
  
 'use strict';
 
-import React from 'react-native';
+import ReactNative from 'react-native';
 
 
-module.exports = React.StyleSheet.create({
+module.exports = ReactNative.StyleSheet.create({
   value: {
     fontWeight: 'bold',
-    fontSize:16
+    fontSize:__APPLETV__ ? 48 : 16
   }
 });

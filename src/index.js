@@ -24,7 +24,6 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
  
- 
 module.exports = {
   CompactLayout:require('./CompactLayout'),
   DetailLayout:require('./DetailLayout'),
