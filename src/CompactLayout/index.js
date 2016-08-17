@@ -23,7 +23,7 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 'use strict';
 
 import React from 'react';
@@ -37,6 +37,9 @@ import SLDS from 'react.force.base.theme';
 
 import FieldItem from './FieldItem';
 
+import compactLayout from '../../../../mockedData/compactLayout.json';
+import sobj from '../../../../mockedData/sobj.json';
+
 module.exports = React.createClass ({
   contextTypes: {
     sobj: React.PropTypes.object,
@@ -47,18 +50,27 @@ module.exports = React.createClass ({
     return {
       hideFields:[],
       onSobjRequest:null,
+      snapshot: false
     };
   },
+  _mockDataForSnapshotTest() {
+    //mock report and sObj response
+    this.context.compactLayout = compactLayout;
+    this.context.sobj = sobj;
+  },
   getFieldItems(){
+    if (this.props.snapshot) {
+      this._mockDataForSnapshotTest();
+    }
     if(this.context.compactLayout && this.context.compactLayout.fieldItems && this.context.compactLayout.fieldItems.length){
       return this.context.compactLayout.fieldItems.map((layoutItem,index)=>{
         if(index){
           return (
-            <FieldItem 
-            sobj={this.context.sobj} 
-            layoutItem={layoutItem} 
+            <FieldItem
+            sobj={this.context.sobj}
+            layoutItem={layoutItem}
             onLayoutTap={this.props.onLayoutTap}
-            onSobjRequest={this.props.onSobjRequest} 
+            onSobjRequest={this.props.onSobjRequest}
             hideFields={this.props.hideFields} />
           );
         }
